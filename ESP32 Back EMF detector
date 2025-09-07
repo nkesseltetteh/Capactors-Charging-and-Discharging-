@@ -1,0 +1,13 @@
+ // ESP32 Back EMF Detector
+ const int emfPin = 35; // Analog pin connected to voltage divider output
+ void setup() {
+ Serial.begin(115200); // Initialize serial communication
+ }
+ void loop() {
+ int emfValue = analogRead(emfPin); // Read analog value from the pin
+ // Check if the detected voltage (after voltage division) exceeds a threshold
+ if (emfValue > 100) { // Threshold set to avoid noise; adjust based on observation
+ Serial.print("Back EMF detected! ADC Value: ");
+ Serial.println(emfValue);
+ }
+ delay(100); // Small delay to prevent excessive serial outpu
